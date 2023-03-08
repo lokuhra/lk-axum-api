@@ -1,4 +1,4 @@
-# fly.toml file generated for axumlokuhratest on 2023-03-07T22:17:55-03:00
+# fly.toml file generated for axumlokuhratest on 2023-03-08T15:24:23-03:00
 
 app = "axumlokuhratest"
 kill_signal = "SIGINT"
