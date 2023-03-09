@@ -10,6 +10,8 @@ pub enum AppError {
     InternalServerError,
     UserDoesNotExist,
     UserAlreadyExits,
+    TaskNotExist,
+    TaskFormatInvalid,
 }
 
 impl IntoResponse for AppError {
@@ -25,6 +27,8 @@ impl IntoResponse for AppError {
             Self::WrongCredential => (StatusCode::UNAUTHORIZED, "wrong credentials"),
             Self::UserDoesNotExist => (StatusCode::UNAUTHORIZED, "User does not exist"),
             Self::UserAlreadyExits => (StatusCode::BAD_REQUEST, "User already exists"),
+            Self::TaskNotExist => (StatusCode::BAD_REQUEST, "Task not exists"),
+            Self::TaskFormatInvalid => (StatusCode::BAD_REQUEST, "Format id task is invalid"),
         };
         (status, Json(json!({ "error": err_msg }))).into_response()
     }

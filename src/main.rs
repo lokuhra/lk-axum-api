@@ -5,7 +5,6 @@ use axum::{
 };
 use once_cell::sync::Lazy;
 use sqlx::postgres::PgPoolOptions;
-use std::env;
 use tower_http::cors::{Any, CorsLayer};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -31,11 +30,6 @@ async fn main() {
         ))
         .with(tracing_subscriber::fmt::layer())
         .init();
-
-    let env_vars = env::vars();
-    for (key, value) in env_vars.into_iter() {
-        println!("{} = {:?}", key, value);
-    }
 
     let cors = CorsLayer::new().allow_origin(Any);
 
