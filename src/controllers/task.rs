@@ -1,17 +1,10 @@
 use crate::error::AppError;
-use crate::models::{auth::Claims, task::Task};
+use crate::models::{auth::Claims, task::PaginationParams, task::Task};
 use axum::extract::Query;
 use axum::response::IntoResponse;
 use axum::{extract::Path, http::StatusCode, Extension, Json};
-use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlx::PgPool;
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct PaginationParams {
-    page: Option<i32>,
-    limit: Option<i32>,
-}
 
 pub async fn tasks(
     _claims: Claims,

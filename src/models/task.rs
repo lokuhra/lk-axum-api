@@ -10,3 +10,9 @@ pub struct Task {
 pub struct TaskError {
     pub error: String,
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct PaginationParams {
+    pub page: Option<i32>,
+    pub limit: Option<i32>,
+}
